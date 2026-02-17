@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>akdemia modas</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .polo { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; width: 200px; text-align: center; }
+        .polo img { width: 150px; height: 150px; object-fit: cover; }
+    </style>
+	<link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <div th:each="polo : ${polos}" class="polo">
+        <img th:src="@{/images/{img}(img=${polo.imagen})}" alt="Imagen del polo">
+        <h3 th:text="${polo.nombre}">Nombre</h3>
+        <p th:text="${polo.descripcion}">Descripción</p>
+        <p>Precio: $<span th:text="${polo.precio}">0.00</span></p>
+    </div>
+</body>
+</html>
